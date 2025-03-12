@@ -7,7 +7,7 @@
         <title>P-values</title>
         <style>
             body {
-                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
                 line-height: 1.6;
                 max-width: 800px;
                 margin: 0 auto;
@@ -47,20 +47,6 @@
                 background-color: #ffebee;
                 border-color: #f44336;
             }
-            .result {
-                margin-top: 20px;
-                padding: 20px;
-                border-radius: 8px;
-                display: none;
-            }
-            .success {
-                background-color: #c8e6c9;
-                color: #2e7d32;
-            }
-            .error {
-                background-color: #ffebee;
-                color: #c62828;
-            }
             button {
                 background-color: #2196f3;
                 color: white;
@@ -83,11 +69,10 @@
         <h1>P-values</h1>
         <p>This quiz helps you review p-values, significance, and how to interpret null hypothesis significance testing. </p>
         <div id="quiz"></div>
-        <div id="result" class="result"></div>
         <button onclick="checkAnswers()" id="submit">Submit Answers</button>
-        
+
         <script>
-            const quiz = {"id": "lecture1", "title": "P-values", "description": "This quiz helps you review p-values, significance, and how to interpret null hypothesis significance testing. ", "date_created": "March 12, 2025", "questions": [{"question": "A researcher has run their analyses, comparing an experimental drug to a placebo (a independent samples t-test) on number of depressive symptoms, and their t-test gives this result: t = 5.98, p = .024. What do you conclude?", "options": ["significant p-value, reject the null, drug and placebo are different", "significant p-value, fail to reject the null, drug and placebo are not different", "not significant p-value, reject the null, drug and placebo are not different", "not significant p-value, fail to reject the null, drug and placebo are different"], "correct": 0}, {"question": "In social sciences, the p-value is compared to an alpha of .05 because...", "options": ["we have agreed as a field to a 5% chance of making a type 1 error", "we want to look at the 5% most likely results", "we have agreed as a field to a 5% chance of making a type 2 error", "because it represents the alpha-omicron divide"], "correct": 0}, {"question": "If a researcher measures self-esteem and social media usage (on a scale of 1-10), and get a pearson correlation of, r = .45, p = .012, they can conclude...", "options": ["significant p-value, fail to reject null, no evidence of a relationship ", "non-significant p-value, fail to reject null, evidence of a relationship ", "non-significant p-value, reject null, no evidence of a relationship ", "significant p-value, reject null, evidence of a relationship "], "correct": 0}]};
+            const quiz = {"id": "lecture1", "title": "P-values", "description": "This quiz helps you review p-values, significance, and how to interpret null hypothesis significance testing. ", "date_created": "March 12, 2025", "questions": [{"question": "A researcher has run their analyses, comparing an experimental drug to a placebo (a independent samples t-test) on number of depressive symptoms, and their t-test gives this result: t = 5.98, p = .024. What do you conclude?", "options": ["significant p-value, reject the null, drug and placebo are different", "significant p-value, fail to reject the null, drug and placebo are not different", "not significant p-value, reject the null, drug and placebo are not different", "not significant p-value, fail to reject the null, drug and placebo are different"], "correct": 0}, {"question": "In social sciences, the p-value is compared to an alpha of .05 because...", "options": ["we have agreed as a field to a 5% chance of making a type 1 error", "we want to look at the 5% most likely results", "we have agreed as a field to a 5% chance of making a type 2 error", "because it represents the alpha-omicron divide"], "correct": 0}, {"question": "If a researcher measures self-esteem and social media usage (on a scale of 1-10), and get a pearson correlation of, r = .45, p = .012, they can conclude...", "options": ["significant p-value, fail to reject null, no evidence of a relationship ", "non-significant p-value, fail to reject null, evidence of a relationship ", "non-significant p-value, reject null, no evidence of a relationship ", "significant p-value, reject null, evidence of a relationship "], "correct": 3}]};
             let selectedAnswers = new Array(quiz.questions.length).fill(null);
             
             function renderQuiz() {
@@ -113,7 +98,6 @@
             function selectAnswer(questionIndex, optionIndex) {
                 selectedAnswers[questionIndex] = optionIndex;
                 
-                // Update visual selection
                 const questionDiv = document.querySelectorAll('.question')[questionIndex];
                 const options = questionDiv.querySelectorAll('.option');
                 
@@ -140,16 +124,10 @@
                     }
                 });
                 
-                const result = document.getElementById('result');
-                result.style.display = 'block';
-                result.className = `result ${score === quiz.questions.length ? 'success' : 'error'}`;
-                result.textContent = `You got ${score} out of ${quiz.questions.length} questions correct!`;
-                
-                // Disable submit button
+                alert(`You got ${score} out of ${quiz.questions.length} questions correct!`);
                 document.getElementById('submit').disabled = true;
             }
             
-            // Initialize the quiz
             renderQuiz();
         </script>
     </body>

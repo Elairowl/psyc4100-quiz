@@ -32,7 +32,7 @@
         "non-significant p-value, reject null, no evidence of a relationship ",
         "significant p-value, reject null, evidence of a relationship "
       ],
-      "correct": 0
+      "correct": 3
     }
   ]
 }
