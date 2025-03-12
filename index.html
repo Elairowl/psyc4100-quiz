@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Quiz Template</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0;
+            background-color: #f5f5f5;
+            line-height: 1.6;
+        }
+        .quiz-container {
+            background-color: white;
+            padding: 0;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .quiz-header {
+            width: 100%;
+            background-color: #f8f8f8;
+            padding: 0;
+            margin: 0;
+            position: relative;
+            text-align: center;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        .quiz-icon {
+            width: 100%;
+            height: auto;
+            max-height: 300px;
+            object-fit: contain;
+            display: block;
+            background-color: #fff5ee; /* Matching the peachy background of the image */
+        }
+        .quiz-title {
+            position: relative;
+            background: #ffffff;
+            margin: 0;
+            padding: 15px;
+            font-size: 24px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .quiz-content {
+            padding: 20px;
+        }
+        .question {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .options {
+            margin-left: 20px;
+        }
+        .option {
+            margin: 10px 0;
+            padding: 5px;
+        }
+        .option:focus-within {
+            outline: 2px solid #4CAF50;
+            background-color: #f8f8f8;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 20px 0;
+        }
+        button:hover, button:focus {
+            background-color: #45a049;
+            outline: 3px solid #2E7D32;
+            outline-offset: 2px;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+        .correct {
+            background-color: #dff0d8;
+            color: #3c763d;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+        .incorrect {
+            background-color: #f2dede;
+            color: #a94442;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+        .progress {
+            margin-bottom: 20px;
+        }
+        [role="alert"] {
+            border: 2px solid currentColor;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+    <main>
+        <div class="quiz-container">
+            <div class="quiz-header">
+                <img src="owl_icon.png" alt="Decorative owl banner" class="quiz-icon">
+                <h1 class="quiz-title">Sample Quiz</h1>
+            </div>
+            <div class="quiz-content">
+                <div class="progress" aria-live="polite">
+                    <span id="progress-status">Question 1 of 3</span>
+                </div>
+            
+            <form id="quiz-form">
+                <div class="question" role="group" aria-labelledby="q1-title">
+                    <h2 id="q1-title">What is the capital of France?</h2>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q1" value="a" id="q1a" aria-describedby="q1-desc">
+                            <label for="q1a">Paris</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q1" value="b" id="q1b" aria-describedby="q1-desc">
+                            <label for="q1b">London</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q1" value="c" id="q1c" aria-describedby="q1-desc">
+                            <label for="q1c">Berlin</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q1" value="d" id="q1d" aria-describedby="q1-desc">
+                            <label for="q1d">Madrid</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question" role="group" aria-labelledby="q2-title">
+                    <h2 id="q2-title">Which planet is known as the Red Planet?</h2>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q2" value="a" id="q2a" aria-describedby="q2-desc">
+                            <label for="q2a">Venus</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q2" value="b" id="q2b" aria-describedby="q2-desc">
+                            <label for="q2b">Mars</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q2" value="c" id="q2c" aria-describedby="q2-desc">
+                            <label for="q2c">Jupiter</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q2" value="d" id="q2d" aria-describedby="q2-desc">
+                            <label for="q2d">Saturn</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question" role="group" aria-labelledby="q3-title">
+                    <h2 id="q3-title">What is the largest mammal on Earth?</h2>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q3" value="a" id="q3a" aria-describedby="q3-desc">
+                            <label for="q3a">African Elephant</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q3" value="b" id="q3b" aria-describedby="q3-desc">
+                            <label for="q3b">Giraffe</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q3" value="c" id="q3c" aria-describedby="q3-desc">
+                            <label for="q3c">Blue Whale</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q3" value="d" id="q3d" aria-describedby="q3-desc">
+                            <label for="q3d">Hippopotamus</label>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" aria-label="Submit quiz and check answers">Submit Quiz</button>
+            </form>
+
+            <div id="result" role="alert" aria-live="polite"></div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Correct answers for each question
+        const correctAnswers = {
+            q1: 'a', // Paris
+            q2: 'b', // Mars
+            q3: 'c'  // Blue Whale
+        };
+
+        // Feedback for each question
+        const feedback = {
+            q1: {
+                correct: "Correct! Paris is indeed the capital of France.",
+                incorrect: "That's incorrect. The capital of France is Paris."
+            },
+            q2: {
+                correct: "Correct! Mars is known as the Red Planet due to its reddish appearance.",
+                incorrect: "That's incorrect. Mars is known as the Red Planet."
+            },
+            q3: {
+                correct: "Correct! The Blue Whale is the largest mammal on Earth.",
+                incorrect: "That's incorrect. The Blue Whale is the largest mammal on Earth."
+            }
+        };
+
+        document.getElementById('quiz-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let score = 0;
+            let feedbackHtml = '';
+
+            // Check each question
+            for (let i = 1; i <= 3; i++) {
+                const questionName = `q${i}`;
+                const selectedAnswer = document.querySelector(`input[name="${questionName}"]:checked`);
+
+                if (selectedAnswer) {
+                    if (selectedAnswer.value === correctAnswers[questionName]) {
+                        score++;
+                        feedbackHtml += `<div class="correct" role="alert">${feedback[questionName].correct}</div>`;
+                    } else {
+                        feedbackHtml += `<div class="incorrect" role="alert">${feedback[questionName].incorrect}</div>`;
+                    }
+                } else {
+                    feedbackHtml += `<div class="incorrect" role="alert">Question ${i} was not answered.</div>`;
+                }
+            }
+
+            // Display results
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `
+                <h2>Quiz Results</h2>
+                <p>Your score: ${score} out of 3</p>
+                ${feedbackHtml}
+            `;
+            resultDiv.style.display = 'block';
+
+            // Announce results to screen readers
+            const announcement = `Quiz completed. You scored ${score} out of 3 questions correct.${score === 3 ? ' Congratulations on achieving a perfect score!' : ''}`;
+            const ariaLive = document.createElement('div');
+            ariaLive.setAttribute('aria-live', 'polite');
+            ariaLive.setAttribute('class', 'sr-only');
+            ariaLive.textContent = announcement;
+            document.body.appendChild(ariaLive);
+
+            // Trigger confetti for perfect score
+            if (score === 3) {
+                // Create a celebratory confetti effect
+                confetti({
+                    particleCount: 100,
+                    spread: 70,
+                    origin: { y: 0.6 },
+                    colors: ['#4CAF50', '#45a049', '#2E7D32', '#gold', '#yellow'],
+                    ticks: 200
+                });
+                
+                // Add a second burst for more celebration
+                setTimeout(() => {
+                    confetti({
+                        particleCount: 50,
+                        angle: 60,
+                        spread: 55,
+                        origin: { x: 0 },
+                        colors: ['#4CAF50', '#45a049', '#2E7D32', '#gold', '#yellow']
+                    });
+                    confetti({
+                        particleCount: 50,
+                        angle: 120,
+                        spread: 55,
+                        origin: { x: 1 },
+                        colors: ['#4CAF50', '#45a049', '#2E7D32', '#gold', '#yellow']
+                    });
+                }, 500);
+            }
+
+            // Scroll to results
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Add keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                if (e.target.type === 'radio') {
+                    e.target.checked = true;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
