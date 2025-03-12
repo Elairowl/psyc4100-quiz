@@ -4,8 +4,11 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>P-values</title>
+        <title>P-values - PSYC 4100</title>
         <style>
+            :root {
+                --theme-color: #3498db;
+            }
             body {
                 font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
                 line-height: 1.6;
@@ -13,6 +16,17 @@
                 margin: 0 auto;
                 padding: 20px;
                 background-color: #f5f5f5;
+            }
+            .course-banner {
+                width: 100%;
+                margin-bottom: 30px;
+                text-align: center;
+            }
+            .course-banner img {
+                max-width: 100%;
+                height: auto;
+                display: block;
+                margin: 0 auto;
             }
             .question {
                 background: white;
@@ -37,7 +51,7 @@
             }
             .selected {
                 background-color: #e3f2fd;
-                border-color: #2196f3;
+                border-color: var(--theme-color);
             }
             .correct {
                 background-color: #c8e6c9;
@@ -48,7 +62,7 @@
                 border-color: #f44336;
             }
             button {
-                background-color: #2196f3;
+                background-color: var(--theme-color);
                 color: white;
                 padding: 10px 20px;
                 border: none;
@@ -57,7 +71,7 @@
                 font-size: 16px;
             }
             button:hover {
-                background-color: #1976d2;
+                filter: brightness(90%);
             }
             button:disabled {
                 background-color: #ccc;
@@ -66,6 +80,9 @@
         </style>
     </head>
     <body>
+        <div class="course-banner">
+            <img src="../owl_icon.png" alt="Owl icon for PSYC 4100 - Dr. Elicia Lair" />
+        </div>
         <h1>P-values</h1>
         <p>This quiz helps you review p-values, significance, and how to interpret null hypothesis significance testing. </p>
         <div id="quiz"></div>
