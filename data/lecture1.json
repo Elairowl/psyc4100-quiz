@@ -1,0 +1,38 @@
+{
+  "id": "lecture1",
+  "title": "P-values",
+  "description": "This quiz helps you review p-values, significance, and how to interpret null hypothesis significance testing. ",
+  "date_created": "March 12, 2025",
+  "questions": [
+    {
+      "question": "A researcher has run their analyses, comparing an experimental drug to a placebo (a independent samples t-test) on number of depressive symptoms, and their t-test gives this result: t = 5.98, p = .024. What do you conclude?",
+      "options": [
+        "significant p-value, reject the null, drug and placebo are different",
+        "significant p-value, fail to reject the null, drug and placebo are not different",
+        "not significant p-value, reject the null, drug and placebo are not different",
+        "not significant p-value, fail to reject the null, drug and placebo are different"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "In social sciences, the p-value is compared to an alpha of .05 because...",
+      "options": [
+        "we have agreed as a field to a 5% chance of making a type 1 error",
+        "we want to look at the 5% most likely results",
+        "we have agreed as a field to a 5% chance of making a type 2 error",
+        "because it represents the alpha-omicron divide"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "If a researcher measures self-esteem and social media usage (on a scale of 1-10), and get a pearson correlation of, r = .45, p = .012, they can conclude...",
+      "options": [
+        "significant p-value, fail to reject null, no evidence of a relationship ",
+        "non-significant p-value, fail to reject null, evidence of a relationship ",
+        "non-significant p-value, reject null, no evidence of a relationship ",
+        "significant p-value, reject null, evidence of a relationship "
+      ],
+      "correct": 0
+    }
+  ]
+}
